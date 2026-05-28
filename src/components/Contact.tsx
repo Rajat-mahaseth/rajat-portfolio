@@ -18,7 +18,7 @@ export default function Contact() {
           <div className="mb-10">
 
             <p className="uppercase tracking-[12px] text-[#f6e19f] text-xs mb-4">
-              LET'S CONNECT
+              LET&apos;s CONNECT
             </p>
 
             <h2 className="serif text-[70px] leading-[0.9] text-white mb-6">

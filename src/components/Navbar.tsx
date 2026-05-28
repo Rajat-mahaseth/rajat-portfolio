@@ -1,57 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function Navbar() {
 
   const [activeSection, setActiveSection] = useState("home")
-
-  useEffect(() => {
-
-    const handleScroll = () => {
-
-      const sections = [
-        "home",
-        "about",
-        "projects",
-        "skills",
-        "experience",
-        "contact",
-      ]
-
-      const scrollPosition = window.scrollY + 200
-
-      sections.forEach((section) => {
-
-        const element = document.getElementById(section)
-
-        if (element) {
-
-          const offsetTop = element.offsetTop
-          const height = element.offsetHeight
-
-          if (
-            scrollPosition >= offsetTop &&
-            scrollPosition < offsetTop + height
-          ) {
-            setActiveSection(section)
-          }
-
-        }
-
-      })
-
-    }
-
-    window.addEventListener("scroll", handleScroll)
-
-    handleScroll()
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll)
-    }
-
-  }, [])
 
   const navClass = (section: string) =>
     activeSection === section
@@ -72,6 +25,17 @@ export default function Navbar() {
         transition
         duration-300
       `
+
+  const handleNavigation = (section: string) => {
+
+    setActiveSection(section)
+
+    document.getElementById(section)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+
+  }
 
   return (
 
@@ -119,29 +83,47 @@ export default function Navbar() {
           text-[#e5e5e5]
         ">
 
-          <a href="#home" className={navClass("home")}>
+          <button
+            onClick={() => handleNavigation("home")}
+            className={navClass("home")}
+          >
             Home
-          </a>
+          </button>
 
-          <a href="#about" className={navClass("about")}>
+          <button
+            onClick={() => handleNavigation("about")}
+            className={navClass("about")}
+          >
             About
-          </a>
+          </button>
 
-          <a href="#projects" className={navClass("projects")}>
+          <button
+            onClick={() => handleNavigation("projects")}
+            className={navClass("projects")}
+          >
             Projects
-          </a>
+          </button>
 
-          <a href="#skills" className={navClass("skills")}>
+          <button
+            onClick={() => handleNavigation("skills")}
+            className={navClass("skills")}
+          >
             Skills
-          </a>
+          </button>
 
-          <a href="#experience" className={navClass("experience")}>
+          <button
+            onClick={() => handleNavigation("experience")}
+            className={navClass("experience")}
+          >
             Experience
-          </a>
+          </button>
 
-          <a href="#contact" className={navClass("contact")}>
+          <button
+            onClick={() => handleNavigation("contact")}
+            className={navClass("contact")}
+          >
             Contact
-          </a>
+          </button>
 
         </div>
 
