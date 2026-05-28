@@ -1,10 +1,57 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Navbar() {
 
   const [activeSection, setActiveSection] = useState("home")
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+
+      const sections = [
+        "home",
+        "about",
+        "projects",
+        "skills",
+        "experience",
+        "contact",
+      ]
+
+      const scrollPosition = window.scrollY + 200
+
+      sections.forEach((section) => {
+
+        const element = document.getElementById(section)
+
+        if (element) {
+
+          const offsetTop = element.offsetTop
+          const height = element.offsetHeight
+
+          if (
+            scrollPosition >= offsetTop &&
+            scrollPosition < offsetTop + height
+          ) {
+            setActiveSection(section)
+          }
+
+        }
+
+      })
+
+    }
+
+    window.addEventListener("scroll", handleScroll)
+
+    handleScroll()
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+
+  }, [])
 
   const navClass = (section: string) =>
     activeSection === section
@@ -15,7 +62,7 @@ export default function Navbar() {
         border
         border-[#d4af3750]
         bg-[#ffffff08]
-        text-white
+        text-[#d4af37]
         shadow-[0_0_20px_rgba(212,175,55,0.08)]
         transition
         duration-300
@@ -25,10 +72,6 @@ export default function Navbar() {
         transition
         duration-300
       `
-
-  const handleClick = (section: string) => {
-    setActiveSection(section)
-  }
 
   return (
 
@@ -76,51 +119,27 @@ export default function Navbar() {
           text-[#e5e5e5]
         ">
 
-          <a
-            href="#home"
-            onClick={() => handleClick("home")}
-            className={navClass("home")}
-          >
+          <a href="#home" className={navClass("home")}>
             Home
           </a>
 
-          <a
-            href="#about"
-            onClick={() => handleClick("about")}
-            className={navClass("about")}
-          >
+          <a href="#about" className={navClass("about")}>
             About
           </a>
 
-          <a
-            href="#projects"
-            onClick={() => handleClick("projects")}
-            className={navClass("projects")}
-          >
+          <a href="#projects" className={navClass("projects")}>
             Projects
           </a>
 
-          <a
-            href="#skills"
-            onClick={() => handleClick("skills")}
-            className={navClass("skills")}
-          >
+          <a href="#skills" className={navClass("skills")}>
             Skills
           </a>
 
-          <a
-            href="#experience"
-            onClick={() => handleClick("experience")}
-            className={navClass("experience")}
-          >
+          <a href="#experience" className={navClass("experience")}>
             Experience
           </a>
 
-          <a
-            href="#contact"
-            onClick={() => handleClick("contact")}
-            className={navClass("contact")}
-          >
+          <a href="#contact" className={navClass("contact")}>
             Contact
           </a>
 
@@ -129,14 +148,14 @@ export default function Navbar() {
         {/* RESUME BUTTON */}
 
         <a
-          href="/resume/Rajat(Resume).pdf"
+          href="/Resume/Rajat(Resume).pdf"
           download
           className="
             px-8
             py-4
             rounded-full
             border-2
-            border-[#04e872]
+            border-[#05cd37]
             text-[#f2f2f2]
             text-[15px]
             font-semibold

@@ -37,13 +37,13 @@ body{
   background-image:
 
     linear-gradient(
-      rgba(212,175,55,0.08) 1px,
+      rgba(212,175,55,0.14) 1px,
       transparent 1px
     ),
 
     linear-gradient(
       90deg,
-      rgba(212,175,55,0.08) 1px,
+      rgba(212,175,55,0.14) 1px,
       transparent 1px
     ),
 
@@ -96,18 +96,37 @@ main{
 
   position:relative;
 
+  
 
   background:
     linear-gradient(
+      rgba(212,175,55,0.04) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
+      90deg,
+      rgba(212,175,55,0.04) 1px,
+      transparent 1px
+    ),
+
+    linear-gradient(
       180deg,
-      rgba(8,14,30,0.72),
-      rgba(5,8,22,0.78)
+      rgba(8,14,30,0.55),
+      rgba(5,8,22,0.62)
     );
+
+  background-size:
+    40px 40px,
+    40px 40px,
+    auto;
 
   border:
     1px solid rgba(212,175,55,0.10);
 
-  backdrop-filter:blur(14px);
+  backdrop-filter:blur(10px);
+
+  -webkit-backdrop-filter:blur(10px);
 
   box-shadow:
     0 0 40px rgba(0,0,0,0.35),
@@ -272,20 +291,6 @@ main{
 }
 
 ::-webkit-scrollbar-thumb{
-  background:#d4af37;
-  border-radius:20px;
-}
-/* INTERNAL SECTION SCROLL */
-
-.hero-card::-webkit-scrollbar{
-  width:6px;
-}
-
-.hero-card::-webkit-scrollbar-track{
-  background:transparent;
-}
-
-.hero-card::-webkit-scrollbar-thumb{
   background:#d4af37;
   border-radius:20px;
 }
