@@ -6,13 +6,12 @@ export default function Hero() {
 
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center ..."
+       className="h-screen flex items-center justify-center px-[6%] pt-24 overflow-hidden"
     >
 
       <div className="w-full max-w-7xl">
 
-        <div className="hero-card rounded-[40px] px-16 py-10 h-[88vh] flex items-center">
-
+        <div className="hero-card rounded-[40px] px-16 py-10 h-[88vh] overflow-y-auto overflow-x-hidden flex items-start">
           <div className="grid lg:grid-cols-2 gap-16 items-center w-full">
 
             {/* LEFT SIDE */}
